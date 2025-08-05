@@ -1,4 +1,4 @@
-// BrandElevate Main JavaScript v2.0.0 - Last updated: 2024-07-30
+// BrandElevate Main JavaScript v2.0.5 - Last updated: 2024-08-05
 // 전역 언어 설정 (Global language settings)
 let currentLanguage = 'ko'; // 기본 언어를 한국어(ko)로 설정
 
@@ -6,9 +6,11 @@ let currentLanguage = 'ko'; // 기본 언어를 한국어(ko)로 설정
 const languageData = {
   'ko': {
     // Header and navigation
-    'nav_services': '서비스',
-    'nav_about': '회사소개',
-    'nav_contact': '무료상담',
+    'nav_why_us': '성장의 이유',
+    'nav_services': '스케일업 솔루션',
+    'nav_process': '성공 로드맵',
+    'nav_story': '우리의 시작',
+    'nav_contact': '무료 성장 컨설팅',
     'get_started': '시작하기',
     'skip_to_content': '본문으로 건너뛰기',
     
@@ -19,7 +21,7 @@ const languageData = {
     
     // Why Different section
     'why_different_title': '다른 마케팅 에이전시와의 결정적 차이',
-    'why_different_subtitle': '단순한 광고를 넘어 비즈니스 전체를 보는 20년의 실전 경험이 차이를 만듭니다.',
+    'why_different_subtitle': '단순한 광고를 넘어 비즈니스 전체를 보는 25년의 실전 경험이 차이를 만듭니다.',
     'real_profit_title': '\'진짜 수익\' 최적화',
     'real_profit_desc': '높은 광고수익률(ROAS)에 만족하지 않고, 물류비를 감안한 실제 마진을 계산하여 순수익을 극대화하는 캠페인을 설계합니다.',
     'logistics_targeting_title': '물류 데이터 기반 타겟팅',
@@ -71,7 +73,7 @@ const languageData = {
     'company_story_title': '우리는 광고 전문가 이전에, 당신과 같은 \'셀러\'였습니다',
     'story1_title': '2000년, 시카고에서의 시작',
     'story1_desc1': 'BrandElevate은 온라인 비즈니스의 모든 것을 직접 부딪히며 시작했습니다. Polo Ralph Lauren 같은 브랜드를 한국에 판매하며, 웹사이트 구축, 광고 집행, 재고 관리, 고객 배송까지 이커머스의 모든 과정을 직접 겪었습니다.',
-    'story1_desc2': '팔리지 않는 재고, 복잡한 통관, 예상치 못한 반품, 그리고 광고비를 태워도 오르지 않는 매출. 이 20년의 실전 경험이 바로 다른 광고 대행사는 가질 수 없는 우리의 가장 강력한 무기입니다.',
+    'story1_desc2': '팔리지 않는 재고, 복잡한 통관, 예상치 못한 반품, 그리고 광고비를 태워도 오르지 않는 매출. 이 25년의 실전 경험이 바로 다른 광고 대행사는 가질 수 없는 우리의 가장 강력한 무기입니다.',
     'story2_title': '기술로 증명하는 실전 경험',
     'story2_desc1': '성공적인 이커머스는 광고와 물류, CS가 분리될 수 없다는 것을 깨닫고 \"쇼핑몰 오픈 → 배송/통관 자동화 → 마케팅 지원까지\" 모든 과정을 하나의 시스템으로 묶는 자동화 플랫폼을 직접 만들었습니다.',
     'story2_desc2': '브랜드엘리베이트는 단순한 마케팅이 아니라 비즈니스 전체를 바라보는 안목으로 실질적인 성과를 만들어냅니다.',
@@ -79,15 +81,18 @@ const languageData = {
     'story_highlight_desc': 'BrandElevate는 이론만 말하는 광고 대행사가 아닌, 당신의 비즈니스 전반을 이해하고 함께 성장하는 실행형 성장 파트너입니다.',
     'story_highlight_box': '당신은 제품에만 집중하세요. 나머지는 BrandElevate가 책임지겠습니다.',
     // CTA section
-    'cta_title': '광고비만 태우고 있다면 전문가의 진단이 필요합니다',
-    'cta_subtitle': 'BrandElevate가 당신의 광고 계정을 무료로 분석해 드립니다.',
+    'cta_title': '당신의 광고, 지금 제대로 가고 있나요?',
+    'cta_subtitle': '광고비만 태우고 있다면 전문가의 진단이 필요합니다',
+    'cta_button_down': '회사 소개서 다운 받기',
     'cta_button': '무료 상담 받기',
     // Footer
     'footer_about': 'BrandElevate',
-    'footer_description': 'AI 디지털 마케팅과 자동화 솔루션으로 비즈니스의 성장을 혁신하세요. 최첨단 인공지능 기술과 데이터 기반 전략을 바탕으로 브랜드 인지도, 매출, 업무 효율까지 한 번에 끌어올립니다. 검색엔진 최적화(SEO), 타겟 광고, 콘텐츠 생성은 물론 반복 업무 자동화까지 — 브랜드의 잠재력을 극대화하세요.',
-    'quick_links': '연결하기',
-    'connect_with_us': 'Connect With Us',
-    'copyright': '© 2024 BrandElevate.com. 모든 권리 보유.',
+    'footer_desc_1': 'AI 마케팅과 자동화 솔루션으로 비즈니스 성장을 혁신합니다.',
+    'footer_desc_2': '데이터 기반 전략으로 브랜드 인지도, 매출, 효율을 한번에 개선합니다.',
+    'footer_desc_3': 'SEO, 타겟 광고부터 업무 자동화까지, 브랜드의 잠재력을 극대화하세요.',
+    'quick_links': 'Quick Links',
+    'contact_us': 'Contact Us',
+    'copyright': '© 2025 BrandElevate.com. All rights reserved.',
     // Language selection
     'language': '언어',
     'lang_ko': '한국어',
@@ -95,15 +100,15 @@ const languageData = {
   },
   'en': {    
     // Header and navigation
-    
-    'nav_services': 'Services',
-    'nav_about': 'About',
-    'nav_contact': 'Free Consultation',
+    'nav_why_us': 'Why We\'re Different',
+    'nav_services': 'Business Scale-Up Solutions',
+    'nav_process': 'Success Roadmap',
+    'nav_story': 'Our Story',
+    'nav_contact': 'Free Growth Consulting',
     'get_started': 'Get Started',
     'skip_to_content': 'Skip to main content',
     
     // Hero section
-    
     'hero_title': 'Marketing + Logistics + Automation, No Need to Do Them Separately',
     'hero_subtitle': 'From website creation, ad campaigns, SEO, logistics systems, to automated operations -\n Brandelevate connects everything for you.',
     'hero_button': 'Get Your Brand Diagnosis',
@@ -157,7 +162,7 @@ const languageData = {
     'step4_title': 'Performance Measurement and Reporting',
     'step4_desc': 'Regularly provide transparent reports from a business profit perspective, not just simple advertising performance.',
     // Company Story section
-    // 'company_story_title': 'Before being advertising experts, we were \'sellers\' like you',
+    'company_story_title': 'Before being advertising experts, we were \'sellers\' like you',
     'story1_title': '2000, Starting in Chicago',
     'story1_desc1': 'BrandElevate started by directly experiencing everything about online business. Selling brands like Polo Ralph Lauren to Korea, we directly experienced all e-commerce processes from website building, advertising execution, inventory management, to customer delivery.',
     'story1_desc2': 'Unsold inventory, complex customs procedures, unexpected returns, and sales that didn\'t rise despite burning advertising costs. This 20 years of hands-on experience is our strongest weapon that other advertising agencies cannot have.',
@@ -168,15 +173,18 @@ const languageData = {
     'story_highlight_desc': 'BrandElevate is not an advertising agency that only talks theory, but an execution-type growth partner that understands your overall business and grows together.',
     'story_highlight_box': 'You focus only on your products. BrandElevate will take responsibility for the rest.',
     // CTA section    
-    'cta_title': 'If you\'re only burning advertising costs, you need expert diagnosis',
-    'cta_subtitle': 'BrandElevate will analyze your advertising account for free.',
-    'cta_button': 'Get Your Free Consultation',
+    'cta_title': 'Is your advertising on the right track?',
+    'cta_subtitle': 'If you\'re only burning ad spend, you need an expert diagnosis.',
+    'cta_button_down': 'Download Company Profile',
+    'cta_button': 'Get Free Consultation',
     // Footer
     'footer_about': 'BrandElevate',
-    'footer_description': 'Innovate your business growth with AI digital marketing and automation solutions. Leverage cutting-edge artificial intelligence and data-driven strategies to elevate brand awareness, revenue, and operational efficiency all at once. From search engine optimization (SEO), targeted advertising, and content creation to workflow automation — maximize your brand\'s potential.',
+    'footer_desc_1': 'Innovating business growth with AI marketing and automation solutions.',
+    'footer_desc_2': 'Improving brand awareness, sales, and efficiency with data-driven strategies.',
+    'footer_desc_3': 'Maximize your brand\'s potential, from SEO and targeted ads to workflow automation.',
     'quick_links': 'Quick Links',
-    'connect_with_us': 'Connect With Us',
-    'copyright': '© 2024 BrandElevate.com. All rights reserved.',
+    'contact_us': 'Contact Us',
+    'copyright': '© 2025 BrandElevate.com. All rights reserved.',
     // Language selection
     
     'language': 'Language',
@@ -202,9 +210,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   
   // Initialize scroll animations
-  setTimeout(function() {
-    initScrollAnimations();
-  }, 500); // Add a small delay to ensure DOM is fully loaded
+  initScrollAnimations();
   
   // Initialize interactive features
   initInteractions();
@@ -769,19 +775,17 @@ function setLanguage(lang) {
 /**
  * 페이지 내 모든 텍스트 업데이트 (Update all text elements on the page)
  */
-
-/**
- * 페이지 내 모든 텍스트 업데이트 (Update all text elements on the page)
- */
 function updatePageTexts() {
   const texts = languageData[currentLanguage];
   
   // 네비게이션 & 헤더 (Navigation & Header)
-  updateElementText('.nav-links li:nth-child(1) a', texts.nav_about);
+  updateElementText('.nav-links li:nth-child(1) a', texts.nav_why_us);
   updateElementText('.nav-links li:nth-child(2) a', texts.nav_services);
-  updateElementText('.nav-links li:nth-child(3) a', texts.nav_contact);
+  updateElementText('.nav-links li:nth-child(3) a', texts.nav_process);
+  updateElementText('.nav-links li:nth-child(4) a', texts.nav_story);
+  updateElementText('.nav-links li:nth-child(5) a', texts.nav_contact);
+
   updateElementText('.skip-to-content', texts.skip_to_content);
-  // Note: 'get_started' key is not used in the final header design in the provided HTML.
 
   // 히어로 섹션 (Hero Section)
   updateElementText('.hero h1', texts.hero_title);
@@ -805,35 +809,18 @@ function updatePageTexts() {
   // 각 서비스 카드 (Each service card)
   const serviceCards = document.querySelectorAll('.service-card');
   if (serviceCards.length >= 6) {
-    // SEO
     updateElementText('.service-card:nth-child(1) .service-title', texts.seo_title);
     updateElementText('.service-card:nth-child(1) .service-description', texts.seo_desc);
-    updateElementText('.service-card:nth-child(1) .service-link', texts.learn_more);
-    
-    // Google Ads
     updateElementText('.service-card:nth-child(2) .service-title', texts.google_ads_title);
     updateElementText('.service-card:nth-child(2) .service-description', texts.google_ads_desc);
-    updateElementText('.service-card:nth-child(2) .service-link', texts.learn_more);
-    
-    // AI Marketing
     updateElementText('.service-card:nth-child(3) .service-title', texts.ai_marketing_title);
     updateElementText('.service-card:nth-child(3) .service-description', texts.ai_marketing_desc);
-    updateElementText('.service-card:nth-child(3) .service-link', texts.learn_more);
-    
-    // Webpage Development
     updateElementText('.service-card:nth-child(4) .service-title', texts.webpage_dev_title);
     updateElementText('.service-card:nth-child(4) .service-description', texts.webpage_dev_desc);
-    updateElementText('.service-card:nth-child(4) .service-link', texts.learn_more);
-    
-    // AI Automation
     updateElementText('.service-card:nth-child(5) .service-title', texts.ai_automation_title);
     updateElementText('.service-card:nth-child(5) .service-description', texts.ai_automation_desc);
-    updateElementText('.service-card:nth-child(5) .service-link', texts.learn_more);
-    
-    // Performance Analytics
     updateElementText('.service-card:nth-child(6) .service-title', texts.analytics_title);
     updateElementText('.service-card:nth-child(6) .service-description', texts.analytics_desc);
-    updateElementText('.service-card:nth-child(6) .service-link', texts.learn_more);
   }
 
   // All-in-One 섹션 (All-in-One Section)
@@ -875,18 +862,25 @@ function updatePageTexts() {
   // CTA 섹션 (Call to Action Section)
   updateElementText('.cta-section h2', texts.cta_title);
   updateElementText('.cta-section p', texts.cta_subtitle);
+  updateElementText('.cta-button-down', texts.cta_button_down);
   updateElementText('.cta-button-large', texts.cta_button);
   
   // 푸터 (Footer)
   updateElementText('.footer-section:nth-child(1) h3', texts.footer_about);
-  updateElementText('.footer-section:nth-child(1) p', texts.footer_description);
+  updateElementText('.footer-description-list li:nth-child(1)', texts.footer_desc_1);
+  updateElementText('.footer-description-list li:nth-child(2)', texts.footer_desc_2);
+  updateElementText('.footer-description-list li:nth-child(3)', texts.footer_desc_3);
+  
   updateElementText('.footer-section:nth-child(2) h4', texts.quick_links);
+  
   // Footer Quick Links
-  updateElementText('.footer-section:nth-child(2) li:nth-child(1) a', texts.nav_services);
-  updateElementText('.footer-section:nth-child(2) li:nth-child(2) a', texts.nav_about);
-  updateElementText('.footer-section:nth-child(2) li:nth-child(3) a', texts.nav_contact);
+  updateElementText('.footer-section:nth-child(2) li:nth-child(1) a', texts.nav_why_us);
+  updateElementText('.footer-section:nth-child(2) li:nth-child(2) a', texts.nav_services);
+  updateElementText('.footer-section:nth-child(2) li:nth-child(3) a', texts.nav_process);
+  updateElementText('.footer-section:nth-child(2) li:nth-child(4) a', texts.nav_story);
+  updateElementText('.footer-section:nth-child(2) li:nth-child(5) a', texts.nav_contact);
 
-  updateElementText('.footer-section:nth-child(3) h4', texts.connect_with_us);
+  updateElementText('.footer-section:nth-child(3) h4', texts.contact_us);
   updateElementText('.footer-bottom p', texts.copyright);
 
   // 언어 선택기 (Language Selector)
@@ -935,18 +929,18 @@ function loadLanguagePreference() {
 function initScrollAnimations() {
   // Get all elements that need animation
   const animatedElements = document.querySelectorAll(
-    '.story-left, .story-section, .story-image, .story-highlight, .ceo-portrait, h1, h2'
+    '.story-left, .story-section, .story-image, .story-highlight, .ceo-portrait, h1, h2, .zigzag-row'
   );
   
   // Create a new Intersection Observer instance
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      // If element is in view
+      // If element is in view, add the animate class.
+      // If not, remove it. This makes the animation repeatable.
       if (entry.isIntersecting) {
-        // Add animation class
         entry.target.classList.add('animate');
-        // Once animated, stop observing this element
-        observer.unobserve(entry.target);
+      } else {
+        entry.target.classList.remove('animate');
       }
     });
   }, {
@@ -955,55 +949,13 @@ function initScrollAnimations() {
     // Start animation slightly before element enters viewport
     rootMargin: '0px 0px -50px 0px'
   });
-
-  // Also observe zigzag rows
-  const zigzagRows = document.querySelectorAll('.zigzag-row');
-  if (zigzagRows.length > 0) {
-    zigzagRows.forEach(element => {
-      observer.observe(element);
-    });
-  }
   
   // Start observing each element
   animatedElements.forEach(element => {
     observer.observe(element);
   });
-  
-  // Apply immediate animation for already visible elements
-  // This ensures elements that are already in viewport on page load get animated
-  animatedElements.forEach(element => {
-    const rect = element.getBoundingClientRect();
-    const isVisible = (
-      rect.top <= window.innerHeight && 
-      rect.bottom >= 0
-    );
-    
-    if (isVisible) {
-      // Add animation class with slight delay for better effect
-      setTimeout(() => {
-        element.classList.add('animate');
-      }, 300);
-    }
-  });
-  
-  // Create global scroll effects
-  window.addEventListener('scroll', function() {
-    const scrollPosition = window.scrollY;
-    
-    // Parallax effect for story background
-    const storySection = document.querySelector('.company-story');
-    if (storySection) {
-      const storyRect = storySection.getBoundingClientRect();
-      if (storyRect.top < window.innerHeight && storyRect.bottom > 0) {
-        const parallaxOffset = (window.innerHeight - storyRect.top) * 0.1;
-        const bg = document.querySelector('.story-bg');
-        if (bg) {
-          bg.style.transform = `translateY(${parallaxOffset}px)`;
-        }
-      }
-    }
-  });
 }
+
 
 /**
  * Initialize interactive features
