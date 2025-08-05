@@ -100,7 +100,7 @@ const languageData = {
   },
   'en': {    
     // Header and navigation
-    'nav_why_us': 'Why We\'re Different',
+    'nav_why_us': 'Why Us',
     'nav_services': 'Business Scale-Up Solutions',
     'nav_process': 'Success Roadmap',
     'nav_story': 'Our Story',
