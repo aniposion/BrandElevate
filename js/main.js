@@ -7,10 +7,10 @@ const languageData = {
   'ko': {
     // Header and navigation
     'nav_why_us': '성장의 이유',
-    'nav_services': '스케일업 솔루션',
+    'nav_services': '비즈니스 성장 솔루션',
     'nav_process': '성공 로드맵',
     'nav_story': '우리의 시작',
-    'nav_contact': '무료 성장 컨설팅',
+    'nav_contact': '무료 컨설팅 받기',
     'get_started': '시작하기',
     'skip_to_content': '본문으로 건너뛰기',
     
@@ -104,7 +104,7 @@ const languageData = {
     'nav_services': 'Business Scale-Up Solutions',
     'nav_process': 'Success Roadmap',
     'nav_story': 'Our Story',
-    'nav_contact': 'Free Growth Consulting',
+    'nav_contact': 'Free Consulting',
     'get_started': 'Get Started',
     'skip_to_content': 'Skip to main content',
     
