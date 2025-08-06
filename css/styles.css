@@ -78,13 +78,33 @@ a:hover {
   color: var(--color-accent);
 }
 
+body > .container:first-of-type {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  max-width: 100%;
+  /* --- 수정된 부분 --- */
+  background-color: rgba(255, 255, 255); /* 거의 불투명한 흰색 배경 */
+  backdrop-filter: blur(8px);                  /* 스크롤 시 콘텐츠가 비치는 블러 효과 */
+  -webkit-backdrop-filter: blur(8px);          /* Safari 브라우저 지원 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);   /* 콘텐츠와 구분되는 미세한 그림자 */
+  /* --- 수정 끝 --- */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 /* Header */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-md) 0;
+  /* 기존 'padding' 값을 수정합니다. */
+  padding: 10px 15px; /* 고정 헤더에 맞게 상하좌우 패딩 조정 */
   position: relative;
+  /* 콘텐츠 중앙 정렬을 위해 아래 속성을 추가합니다. */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* 언어 선택기 스타일 (Language selector styles) */
@@ -158,6 +178,13 @@ header {
 .logo {
   display: flex;
   align-items: center;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
 }
 
 .logo img {
@@ -1138,7 +1165,7 @@ h1.animate, h2.animate {
   position: relative;
 }
 
-.cta-button-secondary, .cta-button-large, .cta-button-down {
+.cta-button-secondary, .cta-button-large, .cta-button-down, .cta-button-down2 {
   background: linear-gradient(45deg, var(--color-accent), #f5c842);
   color: #333;
   padding: var(--spacing-md) var(--spacing-xl);
@@ -1156,7 +1183,7 @@ h1.animate, h2.animate {
 }
 
 /* Button shine effect */
-.cta-button-secondary::before, .cta-button-large::before, .cta-button-down::before {
+.cta-button-secondary::before, .cta-button-large::before, .cta-button-down::before, .cta-button-down2::before {
   content: '';
   position: absolute;
   top: 0;
@@ -1172,7 +1199,7 @@ h1.animate, h2.animate {
   animation: shineEffect 3s infinite 1s;
 }
 
-.cta-button-secondary:hover, .cta-button-large:hover, .cta-button-down:hover {
+.cta-button-secondary:hover, .cta-button-large:hover, .cta-button-down:hover, .cta-button-down2:hover {
   background: linear-gradient(45deg, #f5c842, var(--color-accent));
   transform: translateY(-3px);
   box-shadow: 

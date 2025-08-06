@@ -84,6 +84,7 @@ const languageData = {
     'cta_title': '당신의 광고, 지금 제대로 가고 있나요?',
     'cta_subtitle': '광고비만 태우고 있다면 전문가의 진단이 필요합니다',
     'cta_button_down': '회사 소개서 다운 받기',
+    'cta_button_down2': '광고 제안서 다운 받기',
     'cta_button': '무료 상담 받기',
     // Footer
     'footer_about': 'BrandElevate',
@@ -176,6 +177,7 @@ const languageData = {
     'cta_title': 'Is your advertising on the right track?',
     'cta_subtitle': 'If you\'re only burning ad spend, you need an expert diagnosis.',
     'cta_button_down': 'Download Company Profile',
+    'cta_button_down2': 'Download Ad Proposal',
     'cta_button': 'Get Free Consultation',
     // Footer
     'footer_about': 'BrandElevate',
@@ -863,6 +865,7 @@ function updatePageTexts() {
   updateElementText('.cta-section h2', texts.cta_title);
   updateElementText('.cta-section p', texts.cta_subtitle);
   updateElementText('.cta-button-down', texts.cta_button_down);
+  updateElementText('.cta-button-down2', texts.cta_button_down2);
   updateElementText('.cta-button-large', texts.cta_button);
   
   // 푸터 (Footer)
