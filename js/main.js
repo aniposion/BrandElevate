@@ -97,7 +97,20 @@ const languageData = {
     // Language selection
     'language': '언어',
     'lang_ko': '한국어',
-    'lang_en': 'English' 
+    'lang_en': 'English',
+
+    // Mail popup
+    'popup_title':  '무료 상담 받기',
+    'popup_desc':   '아래 양식을 작성해주시면 신속하게 답변해드리겠습니다.',
+    'popup_submit': '메시지 보내기',
+
+    'popup_label_lastName' : '성',
+    'popup_label_firstName': '이름',
+    'popup_label_email'    : '이메일',
+    'popup_label_phone'    : '연락처',
+    'popup_label_subject'  : '제목',
+    'popup_label_message'  : '내용',
+    'popup_label_company'  : '회사명'
   },
   'en': {    
     // Header and navigation
@@ -191,7 +204,20 @@ const languageData = {
     
     'language': 'Language',
     'lang_ko': '한국어',
-    'lang_en': 'English'
+    'lang_en': 'English',
+
+    /* mail popup */
+    'popup_title':  'Get Free Consultation',
+    'popup_desc':   'Please fill out the form below and we’ll respond promptly.',
+    'popup_submit': 'Send Message',
+
+    'popup_label_lastName' : 'Last Name',
+    'popup_label_firstName': 'First Name',
+    'popup_label_email'    : 'Email',
+    'popup_label_phone'    : 'Phone',
+    'popup_label_subject'  : 'Subject',
+    'popup_label_message'  : 'Message',
+    'popup_label_company'  : 'Company'
   }
 };
 
@@ -892,6 +918,29 @@ function updatePageTexts() {
   // 언어 선택기 (Language Selector)
   updateElementText('.language-option[data-lang="ko"]', texts.lang_ko);
   updateElementText('.language-option[data-lang="en"]', texts.lang_en);
+
+  updateElementText('.email-popup .popup-title',  texts.popup_title);
+  updateElementText('.email-popup .popup-desc',   texts.popup_desc);
+  updateElementText('#send-email-btn',            texts.popup_submit);
+
+
+  updateElementText('label[for="lastName"]',   texts.popup_label_lastName);
+  updateElementText('label[for="firstName"]',  texts.popup_label_firstName);
+  updateElementText('label[for="email"]',      texts.popup_label_email);
+  updateElementText('label[for="phone"]',      texts.popup_label_phone);
+  updateElementText('label[for="subject"]',    texts.popup_label_subject);
+  updateElementText('label[for="message"]',    texts.popup_label_message);
+  updateElementText('label[for="company"]',    texts.popup_label_company);
+/*
+  const setPH = (id, val) => document.getElementById(id).placeholder = val;
+  setPH('lastName',  texts.popup_label_lastName);
+  setPH('firstName', texts.popup_label_firstName);
+  setPH('email',     texts.popup_label_email);
+  setPH('phone',     texts.popup_label_phone);
+  setPH('subject',   texts.popup_label_subject);
+  setPH('message',   texts.popup_label_message);
+  setPH('message',   texts.popup_label_company);
+  */
 }
 
 
