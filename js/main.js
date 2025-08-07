@@ -216,6 +216,9 @@ document.addEventListener("DOMContentLoaded", function() {
   
   // Initialize interactive features
   initInteractions();
+
+  initEmailPopup(); 
+
 });
 
 /**
@@ -1042,4 +1045,93 @@ function initInteractions() {
       });
     });
   }
+}
+
+/**
+ * 이메일 팝업 및 EmailJS 전송 기능 초기화
+ */
+function initEmailPopup() {
+  // --- EmailJS 설정 ---
+  // 중요: 아래 값들을 자신의 EmailJS 계정 정보로 반드시 교체하세요.
+  const serviceID = 'service_sy3t3st';
+  const templateID = 'template_vd6aicd';
+  const publicKey = 'otj91E1g0eVHidqoe';
+
+  // EmailJS 초기화
+  (function(){
+      emailjs.init({
+          publicKey: publicKey,
+      });
+  })();
+  
+  // --- DOM 요소 선택 ---
+  const popupOverlay = document.getElementById('email-popup-overlay');
+  const contactForm = document.getElementById('contact-form');
+  const sendButton = document.getElementById('send-email-btn');
+  const formStatus = document.getElementById('form-status');
+  const closePopupButton = document.getElementById('close-popup-btn');
+  const emailPopupTriggers = document.querySelectorAll('.open-email-popup');
+
+  // --- 이벤트 리스너 ---
+  
+  // 팝업 열기
+  emailPopupTriggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          popupOverlay.classList.add('visible');
+      });
+  });
+
+  // 팝업 닫기 함수
+  const closePopup = () => {
+      popupOverlay.classList.remove('visible');
+  }
+
+  // 닫기 버튼 또는 오버레이 클릭 시 팝업 닫기
+  closePopupButton.addEventListener('click', closePopup);
+  popupOverlay.addEventListener('click', (e) => {
+      // 팝업 콘텐츠가 아닌 배경(오버레이)을 클릭했을 때만 닫힘
+      if (e.target === popupOverlay) {
+          closePopup();
+      }
+  });
+
+  // 폼 제출 처리
+  contactForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // 간단한 유효성 검사
+      if (!this.firstName.value || !this.lastName.value || !this.email.value || !this.subject.value || !this.message.value) {
+          formStatus.textContent = '모든 필수 항목을 입력해주세요.';
+          formStatus.style.color = 'red';
+          return;
+      }
+
+      // EmailJS로 메일 전송
+      sendButton.disabled = true;
+      sendButton.textContent = '전송 중...';
+      formStatus.textContent = '';
+      
+      emailjs.sendForm(serviceID, templateID, this)
+          .then(() => {
+              sendButton.disabled = false;
+              sendButton.textContent = 'Send Message';
+              formStatus.textContent = '메일이 성공적으로 전송되었습니다!';
+              formStatus.style.color = 'green';
+              
+              contactForm.reset(); // 폼 초기화
+              
+              // 2초 후 팝업 닫기
+              setTimeout(() => {
+                  closePopup();
+                  formStatus.textContent = ''; // 상태 메시지 초기화
+              }, 2000);
+              
+          }, (err) => {
+              sendButton.disabled = false;
+              sendButton.textContent = 'Send Message';
+              formStatus.textContent = '메일 전송에 실패했습니다. ' + JSON.stringify(err);
+              formStatus.style.color = 'red';
+          });
+  });
 }

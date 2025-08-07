@@ -84,9 +84,10 @@
           <li><a href="#services">비즈니스 성장 솔루션</a></li>
           <li><a href="#process-section">성공 로드맵</a></li>
           <li><a href="#company-story">우리의 시작</a></li>
-          <li><a href="mailto:contact@erunbrand.com">무료 컨설팅 받기</a></li>
+          <li><a href="#" class="open-email-popup">무료 컨설팅 받기</a></li>
         </ul>
       </nav>
+      
       <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span>
         <span></span>
@@ -103,7 +104,7 @@
       <h1>마케팅 + 물류 + 자동화, 이젠 따로 할 필요 없습니다</h1>
       <p>홈페이지 제작, 광고 집행, SEO, 물류 시스템, 자동화 운영까지<br>
       Brandelevate가 모든 것을 연결해드립니다.</p>
-      <a href="mailto:contact@erunbrand.com" class="hero-button">내 브랜드 진단받기</a>
+      <a href="#" class="hero-button open-email-popup">내 브랜드 진단받기</a>
     </div>
   </section>
 
@@ -329,7 +330,7 @@
       <div>
         <a href="./contents/BRANDELEVATE_Introduce.pdf" class="cta-button-down" target="_blank" rel="noopener noreferrer">회사 소개서 다운 받기</a>
         <a href="./contents/brandelevate_premium_google_ads.pdf" class="cta-button-down2" target="_blank" rel="noopener noreferrer">광고제안서 다운받기</a>
-        <a href="mailto:contact@erunbrand.com" class="cta-button-large">무료 상담 받기</a>
+        <a href="#" class="cta-button-large open-email-popup">무료 상담 받기</a>
       </div>
       </div>
   </section>
@@ -352,7 +353,7 @@
             <li><a href="#services">비즈니스 성장 솔루션</a></li>
             <li><a href="#process-section">성공 로드맵</a></li>
             <li><a href="#company-story">우리의 시작</a></li>
-            <li><a href="mailto:contact@erunbrand.com">무료 컨설팅 받기</a></li>
+            <li><a href="#" class="open-email-popup">무료 컨설팅 받기</a></li>
           </ul>
         </div>
         <div class="footer-section">
@@ -370,7 +371,51 @@
     </div>
   </footer>
 
+  <div id="email-popup-overlay" class="email-popup-overlay">
+    <div id="email-popup" class="email-popup">
+      <button id="close-popup-btn" class="close-popup-btn" aria-label="Close">&times;</button>
+      <h2>문의하기</h2>
+      <p>아래 양식을 작성해주시면 신속하게 답변해드리겠습니다.</p>
+      <form id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">성 (First Name)</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">이름 (Last Name)</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">이메일 (Email)</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">연락처 (Phone)</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+        <div class="form-group">
+          <label for="company">회사명 (Company)</label>
+          <input type="text" id="company" name="company">
+        </div>
+        <div class="form-group">
+          <label for="subject">제목 (Subject)</label>
+          <input type="text" id="subject" name="subject" required>
+        </div>
+        <div class="form-group">
+          <label for="message">메시지 (Message)</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" id="send-email-btn" class="submit-btn">메시지 보내기</button>
+        <p id="form-status" class="form-status"></p>
+      </form>
+    </div>
+  </div>
   <script src="js/particles.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
   <script src="js/main.js?v=2.0.4"></script>
 </body>
 </html>

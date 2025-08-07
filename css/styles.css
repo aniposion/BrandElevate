@@ -37,6 +37,18 @@
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
+  
+  --c-bg: #fff;
+  --c-fg: #0f172a;           /* 글자색 (slate-900)  */
+  --c-primary: #1e40af;      /* 버튼/포커스 인디고-800 */
+  --c-primary-light: #3b82f6;/* hover 인디고-500 */
+  --c-border: #cbd5e1;       /* slate-300 */
+  --radius: 0.5rem;
+  --shadow: 0 10px 25px rgba(0,0,0,.06);
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
 }
 
 * {
@@ -1539,5 +1551,98 @@ button:focus {
   
   .logo-text {
     font-size: var(--font-size-large);
+  }
+
+  
+}
+
+
+
+
+/* ───────── 팝업 오버레이/카드 ───────── */
+.email-popup-overlay{
+  position:fixed; inset:0; display:flex;
+  justify-content:center; align-items:center;
+  background:rgba(0,0,0,.6); z-index:1100;
+  opacity:0; visibility:hidden;
+  transition:opacity .3s ease, visibility 0s .3s;
+}
+.email-popup-overlay.visible{
+  opacity:1; visibility:visible; transition:opacity .3s ease;
+}
+
+.email-popup{
+  background:var(--c-bg);
+  color:var(--c-fg);
+  width:90%; max-width:540px;
+  padding:var(--space-4);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  position:relative;
+}
+
+/* ───────── 닫기 버튼 ───────── */
+.close-popup-btn{
+  position:absolute; top:var(--space-2); right:var(--space-2);
+  background:none; border:none; font-size:1.75rem;
+  line-height:1; color:var(--c-border); cursor:pointer;
+}
+.close-popup-btn:hover{color:var(--c-primary-light);}
+
+/* ───────── 타이틀 / 설명 ───────── */
+.email-popup h2{
+  color: var(--color-primary);
+  font-size: var(--font-size-2xl);   /* 필요하면 크기 조절 */
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+.email-popup p{margin:0 0 var(--space-3); font-size:.95rem; color:#475569;} /* slate-600 */
+
+/* ───────── 폼 레이아웃 ───────── */
+#contact-form{display:grid; gap:var(--space-3);}
+#contact-form .form-row{
+  display:grid; grid-template-columns:1fr 1fr; gap:var(--space-3);
+}
+@media(max-width:480px){#contact-form .form-row{grid-template-columns:1fr;}}
+
+/* ───────── 라벨 / 인풋 ───────── */
+#contact-form label{
+  display:block; margin-bottom:var(--space-1);
+  font-size:.85rem; font-weight:600; color:#334155; /* slate-700 */
+}
+#contact-form input,
+#contact-form textarea{
+  width:100%; padding:var(--space-2) var(--space-3);
+  border:1px solid var(--c-border);
+  border-radius:var(--radius);
+  font-family:inherit; font-size:.9rem;
+  transition:border-color .2s;
+}
+#contact-form input:focus,
+#contact-form textarea:focus{
+  outline:0; border-color:var(--c-primary);
+  box-shadow:0 0 0 2px rgba(59,130,246,.2); /* 인디고-500 */
+}
+
+
+/* ───────── 전송 버튼 ───────── */
+.submit-btn{
+  justify-self:start;
+  background:var(--c-primary); color:#fff;
+  padding:var(--space-2) var(--space-4);
+  border:none; border-radius:var(--radius);
+  font-size:.9rem; font-weight:600; cursor:pointer;
+  transition:background .2s, transform .05s;
+  width:auto;          /* 기존 100% 폭 제거 */
+  justify-self:end;    /* 그리드 컨테이너 오른쪽 */
+  margin-left:auto;    /* 플렉스/블록 레이아웃에서도 우측 정렬 */
+}
+.submit-btn:hover{background:var(--c-primary-light);}
+.submit-btn:active{transform:translateY(1px);}
+
+@media(max-width:480px){
+  #contact-form .submit-btn{
+    width:100%;
+    justify-self:stretch;
   }
 }
