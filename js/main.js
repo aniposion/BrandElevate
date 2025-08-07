@@ -85,7 +85,7 @@ const languageData = {
     'cta_subtitle': '광고비만 태우고 있다면 전문가의 진단이 필요합니다',
     'cta_button_down': '회사 소개서 다운 받기',
     'cta_button_down2': '광고 제안서 다운 받기',
-    'cta_button': '무료 상담 받기',
+    'cta_button': '무료 컨설팅 받기',
     // Footer
     'footer_about': 'BrandElevate',
     'footer_desc_1': 'AI 마케팅과 자동화 솔루션으로 비즈니스 성장을 혁신합니다.',
@@ -100,7 +100,7 @@ const languageData = {
     'lang_en': 'English',
 
     // Mail popup
-    'popup_title':  '무료 상담 받기',
+    'popup_title':  '무료 컨설팅 받기',
     'popup_desc':   '아래 양식을 작성해주시면 신속하게 답변해드리겠습니다.',
     'popup_submit': '메시지 보내기',
 
