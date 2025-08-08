@@ -913,10 +913,10 @@ function updatePageTexts() {
   updateElementText('.footer-section:nth-child(2) h4', texts.quick_links);
   
   // Footer Quick Links
-  updateElementText('.footer-section:nth-child(2) li:nth-child(1) a', texts.nav_why_us);
-  updateElementText('.footer-section:nth-child(2) li:nth-child(2) a', texts.nav_services);
-  updateElementText('.footer-section:nth-child(2) li:nth-child(3) a', texts.nav_process);
-  updateElementText('.footer-section:nth-child(2) li:nth-child(4) a', texts.nav_story);
+  updateElementText('.footer-section:nth-child(2) li:nth-child(1) a', texts.nav_services);
+  updateElementText('.footer-section:nth-child(2) li:nth-child(2) a', texts.nav_story);
+  updateElementText('.footer-section:nth-child(2) li:nth-child(3) a', texts.nav_about);
+  updateElementText('.footer-section:nth-child(2) li:nth-child(4) a', texts.nav_partner);
   updateElementText('.footer-section:nth-child(2) li:nth-child(5) a', texts.nav_contact);
 
   updateElementText('.footer-section:nth-child(3) h4', texts.contact_us);

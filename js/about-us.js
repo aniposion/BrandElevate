@@ -1064,7 +1064,7 @@ function createCTASection() {
   
   const button = document.createElement('a');
   button.href = '#';
-  button.className = 'cta-button-large';
+  button.className = 'cta-button-large open-email-popup';
   button.textContent = '무료 상담 문의';
   
   container.appendChild(title);
