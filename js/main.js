@@ -11,8 +11,8 @@ const languageData = {
     'nav_process': '성공 로드맵',
     'nav_story': '우리의 시작',
     'nav_contact': '무료 컨설팅 받기',
-    'nav_about' : '회사 소개',
-    'nav_partner' :'파트너',
+    'nav_about' : 'ERUN 그룹',
+    'nav_partner' :'파트너사',
     'get_started': '시작하기',
     'skip_to_content': '본문으로 건너뛰기',
     
@@ -816,13 +816,12 @@ function updatePageTexts() {
   const texts = languageData[currentLanguage];
   
   // 네비게이션 & 헤더 (Navigation & Header)
-  updateElementText('.nav-links li:nth-child(1) a', texts.nav_why_us);
-  updateElementText('.nav-links li:nth-child(2) a', texts.nav_services);
-  updateElementText('.nav-links li:nth-child(3) a', texts.nav_process);
-  updateElementText('.nav-links li:nth-child(4) a', texts.nav_story);
-  updateElementText('.nav-links li:nth-child(5) a', texts.nav_about);
-  updateElementText('.nav-links li:nth-child(6) a', texts.nav_partner);
-  updateElementText('.nav-links li:nth-child(7) a', texts.nav_contact);
+
+  updateElementText('.nav-links li:nth-child(1) a', texts.nav_services);
+  updateElementText('.nav-links li:nth-child(2) a', texts.nav_story);
+  updateElementText('.nav-links li:nth-child(3) a', texts.nav_about);
+  updateElementText('.nav-links li:nth-child(4) a', texts.nav_partner);
+  updateElementText('.nav-links li:nth-child(5) a', texts.nav_contact);
 
   updateElementText('.skip-to-content', texts.skip_to_content);
 
