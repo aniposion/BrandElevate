@@ -11,6 +11,8 @@ const languageData = {
     'nav_process': '성공 로드맵',
     'nav_story': '우리의 시작',
     'nav_contact': '무료 컨설팅 받기',
+    'nav_about' : '회사 소개',
+    'nav_partner' :'파트너',
     'get_started': '시작하기',
     'skip_to_content': '본문으로 건너뛰기',
     
@@ -83,7 +85,7 @@ const languageData = {
     // CTA section
     'cta_title': '당신의 광고, 지금 제대로 가고 있나요?',
     'cta_subtitle': '광고비만 태우고 있다면 전문가의 진단이 필요합니다',
-    'cta_button_down': '회사 소개서 다운 받기',
+    'cta_button_down': '회사 소개',
     'cta_button_down2': '광고 제안서 다운 받기',
     'cta_button': '무료 컨설팅 받기',
     // Footer
@@ -119,6 +121,8 @@ const languageData = {
     'nav_process': 'Success Roadmap',
     'nav_story': 'Our Story',
     'nav_contact': 'Free Consulting',
+    'nav_about' : 'About us',
+    'nav_partner' :'Partners',
     'get_started': 'Get Started',
     'skip_to_content': 'Skip to main content',
     
@@ -189,7 +193,7 @@ const languageData = {
     // CTA section    
     'cta_title': 'Is your advertising on the right track?',
     'cta_subtitle': 'If you\'re only burning ad spend, you need an expert diagnosis.',
-    'cta_button_down': 'Download Company Profile',
+    'cta_button_down': 'About Us',
     'cta_button_down2': 'Download Ad Proposal',
     'cta_button': 'Get Free Consultation',
     // Footer
@@ -238,8 +242,10 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   
   // Initialize scroll animations
-  initScrollAnimations();
-  
+  setTimeout(function() {
+    initScrollAnimations();
+  }, 500); // Add a small delay to ensure DOM is fully loaded
+    
   // Initialize interactive features
   initInteractions();
 
@@ -814,7 +820,9 @@ function updatePageTexts() {
   updateElementText('.nav-links li:nth-child(2) a', texts.nav_services);
   updateElementText('.nav-links li:nth-child(3) a', texts.nav_process);
   updateElementText('.nav-links li:nth-child(4) a', texts.nav_story);
-  updateElementText('.nav-links li:nth-child(5) a', texts.nav_contact);
+  updateElementText('.nav-links li:nth-child(5) a', texts.nav_about);
+  updateElementText('.nav-links li:nth-child(6) a', texts.nav_partner);
+  updateElementText('.nav-links li:nth-child(7) a', texts.nav_contact);
 
   updateElementText('.skip-to-content', texts.skip_to_content);
 
@@ -984,33 +992,75 @@ function loadLanguagePreference() {
 function initScrollAnimations() {
   // Get all elements that need animation
   const animatedElements = document.querySelectorAll(
-    '.story-left, .story-section, .story-image, .story-highlight, .ceo-portrait, h1, h2, .zigzag-row'
+    '.story-left, .story-section, .story-image, .story-highlight, .ceo-portrait, h1, h2'
   );
-  
-  // Create a new Intersection Observer instance
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      // If element is in view, add the animate class.
-      // If not, remove it. This makes the animation repeatable.
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
-      } else {
-        entry.target.classList.remove('animate');
-      }
-    });
-  }, {
+    
+    // Create a new Intersection Observer instance
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // If element is in view
+        if (entry.isIntersecting) {
+          // Add animation class
+          entry.target.classList.add('animate');
+          // Once animated, stop observing this element
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
     // Element is considered in view when 20% visible
     threshold: 0.2,
     // Start animation slightly before element enters viewport
     rootMargin: '0px 0px -50px 0px'
   });
-  
+
+  // Also observe zigzag rows
+  const zigzagRows = document.querySelectorAll('.zigzag-row');
+  if (zigzagRows.length > 0) {
+    zigzagRows.forEach(element => {
+      observer.observe(element);
+    });
+  }
+
   // Start observing each element
   animatedElements.forEach(element => {
     observer.observe(element);
   });
-}
 
+  // Apply immediate animation for already visible elements
+  // This ensures elements that are already in viewport on page load get animated
+  animatedElements.forEach(element => {
+    const rect = element.getBoundingClientRect();
+    const isVisible = (
+      rect.top <= window.innerHeight && 
+      rect.bottom >= 0
+    );
+    
+    if (isVisible) {
+      // Add animation class with slight delay for better effect
+      setTimeout(() => {
+        element.classList.add('animate');
+      }, 300);
+    }
+  });
+  
+  // Create global scroll effects
+  window.addEventListener('scroll', function() {
+    const scrollPosition = window.scrollY;
+    
+    // Parallax effect for story background
+    const storySection = document.querySelector('.company-story');
+    if (storySection) {
+      const storyRect = storySection.getBoundingClientRect();
+      if (storyRect.top < window.innerHeight && storyRect.bottom > 0) {
+        const parallaxOffset = (window.innerHeight - storyRect.top) * 0.1;
+        const bg = document.querySelector('.story-bg');
+        if (bg) {
+          bg.style.transform = `translateY(${parallaxOffset}px)`;
+        }
+      }
+    }
+  });
+}
 
 /**
  * Initialize interactive features

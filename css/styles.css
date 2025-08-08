@@ -212,7 +212,7 @@ header {
 
 .nav-links {
   display: flex;
-  gap: var(--spacing-lg); /* 메뉴 간 간격 조정 */
+  gap: var(--spacing-xl); /* 메뉴 간 간격 조정 */
   margin: 0;
   padding: 0;
   list-style: none;
@@ -1229,9 +1229,31 @@ footer {
 
 .footer-content {
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--spacing-2xl);
   margin-bottom: var(--spacing-2xl);
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-brand img {
+  height: 30px;
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-brand h3 {
+  font-size: var(--font-size-large);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+}
+
+.footer-brand p {
+  color: var(--color-text-light);
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-small);
 }
 
 .footer-section h3, .footer-section h4 {
@@ -1534,7 +1556,11 @@ button:focus {
   .service-card {
     margin-bottom: var(--spacing-md);
   }
-  
+
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+    
   /* Fix spacing issues */
   .container {
     padding: 0 var(--spacing-sm);
