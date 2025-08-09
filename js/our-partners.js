@@ -1,24 +1,43 @@
-// BrandElevate Our Partners JavaScript v1.0.0
+// BrandElevate Our Partners JavaScript v1.0.1
 
 document.addEventListener("DOMContentLoaded", function() {
-  // 언어 선택기 초기화 (Initialize language selector)
-  initLanguageSelector();
+  // 참고: 언어 선택기는 main.js에서 자동으로 초기화됩니다.
+  // Note: The language selector is initialized automatically by main.js.
   
   // 기본 언어로 텍스트 설정 (Set text in default language)
-  setLanguage(window.currentLanguage || 'ko');
+  // main.js의 setLanguage 함수가 호출되도록 하여 페이지 언어를 설정합니다.
+  if (typeof setLanguage === 'function') {
+    // main.js 에서 설정된 전역 언어 변수(currentLanguage)를 사용합니다.
+    setLanguage(window.currentLanguage || 'ko');
+  }
   
   // 히어로 섹션 애니메이션 초기화
   initHeroAnimation();
   
-  // Initialize partners cards animations
+  // 파트너 카드 애니메이션 초기화
   initPartnerCards();
   
-  // Initialize mobile menu for the partners page
-  initMobileMenu();
+  // 모바일 메뉴 초기화 (our-partners.html 전용)
+  initMobileMenuForPartners();
   
   // 추가 동적 효과 초기화
   initAdditionalEffects();
+
+  // 현재 페이지 네비게이션 활성화
+  highlightActivePartnerLink();
 });
+
+/**
+ * 현재 페이지('our-partners.html') 네비게이션 링크를 활성화합니다.
+ */
+function highlightActivePartnerLink() {
+    const partnersMenuItem = document.querySelector('a[href="our-partners.html"]');
+    if (partnersMenuItem) {
+        // 기존 active 클래스와 충돌을 피하기 위해 고유한 클래스 사용
+        partnersMenuItem.classList.add('active-nav-link'); 
+    }
+}
+
 
 /**
  * 히어로 섹션 애니메이션 초기화
@@ -36,21 +55,6 @@ function initHeroAnimation() {
     setTimeout(() => {
       heroTitle.textContent = titleText;
     }, 500);
-  }
-}
-
-/**
- * 언어 선택기 초기화 (Initialize language selector)
- * 재사용: main.js의 기능 활용
- */
-function initLanguageSelector() {
-  // 이미 main.js에서 초기화됨
-  // Already initialized in main.js
-  
-  // 현재 페이지가 'our-partners.html'인 경우 메뉴 활성화
-  const partnersMenuItem = document.querySelector('a[href="our-partners.html"]');
-  if (partnersMenuItem) {
-    partnersMenuItem.classList.add('active');
   }
 }
 
@@ -121,28 +125,17 @@ function initPartnerCards() {
 }
 
 /**
- * 모바일 메뉴 초기화 (Initialize mobile menu)
- * 재사용: main.js의 기능과 유사하지만 이 페이지에 특화됨
+ * 모바일 메뉴 초기화 (Initialize mobile menu for partners page)
+ * main.js의 기능과 충돌하지 않도록 별도 관리
  */
-function initMobileMenu() {
+function initMobileMenuForPartners() {
   const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
   const navLinks = document.querySelector('.nav-links');
   
   if (mobileMenuToggle && navLinks) {
-    mobileMenuToggle.addEventListener('click', function() {
-      const isExpanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', !isExpanded);
-      
-      navLinks.classList.toggle('active');
-      this.classList.toggle('active');
-      
-      // 접근성을 위한 스크린 리더 안내 (Screen reader guidance for accessibility)
-      if (!isExpanded) {
-        this.setAttribute('aria-label', '메뉴 닫기');
-      } else {
-        this.setAttribute('aria-label', '메뉴 열기');
-      }
-    });
+    // main.js에서 이미 이벤트 리스너가 추가되었을 수 있으므로,
+    // 이 페이지에 특화된 로직만 추가하거나 필요한 경우에만 이벤트를 추가합니다.
+    // 여기서는 main.js의 로직이 그대로 적용되므로 별도의 이벤트 추가는 생략합니다.
   }
 }
 
@@ -160,7 +153,7 @@ function trackPartnerLinkClick(partnerName) {
     gtag('event', 'partner_click', {
       'partner_name': partnerName,
       'page_title': document.title,
-      'user_language': currentLanguage
+      'user_language': window.currentLanguage
     });
   }
 }
@@ -201,74 +194,82 @@ window.addEventListener('load', function() {
   console.log('Partners page fully loaded and initialized');
 });
 
-/**
- * 언어 설정 함수 (Language setting function)
- * main.js와 호환되는 언어 전환 구현 (Compatible language switching implementation)
- */
-function setLanguage(lang) {
-  // main.js의 setLanguage 함수를 재사용 (Reuse setLanguage function from main.js)
-  // 이 함수는 main.js에서 이미 정의되어 있으므로 여기서는 특별한 추가 기능만 구현
-  
-  // 파트너 페이지 전용 번역 요소 (Partner page specific translation elements)
-  const partnersTitle = document.querySelector('.partners-hero h1');
-  const partnersSubtitle = document.querySelector('.partners-hero p');
-  const partnersHeading = document.querySelector('.partners-section h2');
-  const partnersIntro = document.querySelector('.section-subtitle');
-  const ctaTitle = document.querySelector('.cta h2');
-  const ctaDesc = document.querySelector('.cta p');
-  const ctaButton = document.querySelector('.cta .hero-button');
-  
-  // 언어에 따른 파트너 페이지 전용 텍스트 설정 (Set partner page specific text based on language)
-  if (lang === 'en') {
-    if (partnersTitle) partnersTitle.textContent = 'The Choice of Brands That Reject Mediocrity';
-    if (partnersSubtitle) partnersSubtitle.innerHTML = 'We go beyond simple consulting to discover the essence of brands and maximize their potential.<br>Numerous companies have already experienced the authenticity of BrandElevate.';
-    if (partnersHeading) partnersHeading.textContent = 'Our Valued Partners';
-    if (partnersIntro) partnersIntro.textContent = 'BrandElevate is not just a helper, but a co-founder of success. Listen to the stories of companies that have achieved amazing growth with us.';
-    if (ctaTitle) ctaTitle.textContent = 'Looking for a New Global Logistics Partner?';
-    if (ctaDesc) ctaDesc.textContent = 'Accelerate your business growth with BrandElevate\'s professional logistics solutions. Our logistics experts with 25 years of experience will provide optimized solutions for your business.';
-    if (ctaButton) ctaButton.textContent = 'Inquire about Partnership';
-    
-    // 파트너 카드 영어 텍스트 (Partner cards English text)
-    updatePartnerCardLanguage('en');
-  } else {
-    // 한국어 기본값 유지 (Keep Korean defaults)
-    if (partnersTitle) partnersTitle.textContent = '평범함을 거부하는 브랜드들의 선택';
-    if (partnersSubtitle) partnersSubtitle.innerHTML = '저희는 단순한 컨설팅을 넘어 브랜드의 본질을 찾아내고 잠재력을 극대화 합니다.<br>이미 수많은 기업이 BrandElevate 의 진정성을 경험했습니다.';
-    if (partnersHeading) partnersHeading.textContent = 'Our Valued Partners';
-    if (partnersIntro) partnersIntro.textContent = 'BrandElevate는 단순한 조력자가 아닌, 성공의 공동 창업자 입니다. 저희와 함께 놀라운 성장을 이뤄낸 기업들의 이야기를 들어보세요.';
-    if (ctaTitle) ctaTitle.textContent = '글로벌 물류의 새로운 파트너를 찾고 계신가요?';
-    if (ctaDesc) ctaDesc.textContent = 'BrandElevate의 전문적인 물류 솔루션으로 비즈니스 성장을 가속화하세요. 25년 경험의 물류 전문가가 귀사의 비즈니스에 최적화된 솔루션을 제공해 드립니다.';
-    if (ctaButton) ctaButton.textContent = '파트너십 문의하기';
-    
-    // 파트너 카드 한국어 텍스트 (Partner cards Korean text)
-    updatePartnerCardLanguage('ko');
-  }
-}
+// 참고: setLanguage 및 언어 전환 관련 기능은 main.js에서 처리됩니다.
+// 이 파일에서는 파트너 페이지에 특화된 텍스트 업데이트 로직만 남겨두거나,
+// main.js의 setLanguage 함수가 호출될 때 자동으로 처리되도록 구조를 변경하는 것이 좋습니다.
+// 아래 코드는 main.js의 setLanguage 함수가 존재할 경우를 대비한 예시입니다.
+
+const originalSetLanguage = window.setLanguage;
+
+window.setLanguage = function(lang) {
+    // main.js의 원래 setLanguage 함수 호출
+    if (typeof originalSetLanguage === 'function') {
+        originalSetLanguage(lang);
+    }
+
+    // 파트너 페이지 전용 번역 요소
+    const partnersTitle = document.querySelector('.partners-hero h1');
+    const partnersSubtitle = document.querySelector('.partners-hero p');
+    const partnersHeading = document.querySelector('.partners-section h2');
+    const partnersIntro = document.querySelector('.partners-section .section-subtitle');
+    const ctaTitle = document.querySelector('.cta h2');
+    const ctaDesc = document.querySelector('.cta p');
+    const ctaButton = document.querySelector('.cta .hero-button');
+
+    const partnerTranslations = {
+        ko: {
+            heroTitle: '평범함을 거부하는 브랜드들의 선택',
+            heroSubtitle: '저희는 단순한 컨설팅을 넘어 브랜드의 본질을 찾아내고 잠재력을 극대화 합니다.<br>이미 수많은 기업이 BrandElevate 의 진정성을 경험했습니다.',
+            sectionTitle: 'Our Valued Partners',
+            sectionSubtitle: 'BrandElevate는 단순한 조력자가 아닌, 성공의 공동 창업자 입니다. 저희와 함께 놀라운 성장을 이뤄낸 기업들의 이야기를 들어보세요.',
+            ctaTitle: '글로벌 물류의 새로운 파트너를 찾고 계신가요?',
+            ctaDesc: 'BrandElevate의 전문적인 물류 솔루션으로 비즈니스 성장을 가속화하세요. 25년 경험의 물류 전문가가 귀사의 비즈니스에 최적화된 솔루션을 제공해 드립니다.',
+            ctaButton: '파트너십 문의하기',
+            visitWebsite: '웹사이트 방문'
+        },
+        en: {
+            heroTitle: 'The Choice of Brands That Reject Mediocrity',
+            heroSubtitle: 'We go beyond simple consulting to discover the essence of brands and maximize their potential.<br>Numerous companies have already experienced the authenticity of BrandElevate.',
+            sectionTitle: 'Our Valued Partners',
+            sectionSubtitle: 'BrandElevate is not just a helper, but a co-founder of success. Listen to the stories of companies that have achieved amazing growth with us.',
+            ctaTitle: 'Looking for a New Global Logistics Partner?',
+            ctaDesc: 'Accelerate your business growth with BrandElevate\'s professional logistics solutions. Our logistics experts with 25 years of experience will provide optimized solutions for your business.',
+            ctaButton: 'Inquire about Partnership',
+            visitWebsite: 'Visit Website'
+        }
+    };
+
+    const translations = partnerTranslations[lang];
+
+    if (translations) {
+        if (partnersTitle) partnersTitle.textContent = translations.heroTitle;
+        if (partnersSubtitle) partnersSubtitle.innerHTML = translations.heroSubtitle;
+        if (partnersHeading) partnersHeading.textContent = translations.sectionTitle;
+        if (partnersIntro) partnersIntro.textContent = translations.sectionSubtitle;
+        if (ctaTitle) ctaTitle.textContent = translations.ctaTitle;
+        if (ctaDesc) ctaDesc.textContent = translations.ctaDesc;
+        if (ctaButton) ctaButton.textContent = translations.ctaButton;
+        updatePartnerCardLanguage(lang, translations.visitWebsite);
+    }
+};
 
 /**
  * 파트너 카드 언어 업데이트 (Update partner card language)
  */
-function updatePartnerCardLanguage(lang) {
+function updatePartnerCardLanguage(lang, visitText) {
   const partnerCards = document.querySelectorAll('.partner-card');
   
-  // 각 파트너 카드의 "Visit Website" 텍스트 변경
-  // Change "Visit Website" text for each partner card
   partnerCards.forEach(card => {
     const link = card.querySelector('.partner-link');
     if (link) {
       const icon = link.querySelector('i');
-      if (lang === 'en') {
-        link.innerHTML = 'Visit Website ';
-        if (icon) link.appendChild(icon);
-      } else {
-        link.innerHTML = '웹사이트 방문 ';
-        if (icon) link.appendChild(icon);
+      link.textContent = visitText + ' '; // 공백을 추가하여 아이콘과 간격 유지
+      if (icon) {
+        link.appendChild(icon);
       }
     }
   });
-  
-  // 영어 모드에서 특정 파트너 설명 변경 (예시)
-  // Change specific partner descriptions in English mode (example)
+
   if (lang === 'en') {
     const partnerDescriptions = {
       '이런익스프레스': 'A logistics specialist partner providing fast and safe delivery services. From domestic and international shipping to warehouse management, we support your business growth with efficient logistics solutions.',
@@ -279,14 +280,30 @@ function updatePartnerCardLanguage(lang) {
       '조아익스프레스': 'A delivery specialist partner trusted for fast and accurate courier and logistics services. We provide smart delivery solutions that save time and costs through a nationwide delivery network.'
     };
     
-    // 각 파트너 카드의 설명 텍스트 변경
-    // Change description text for each partner card
     partnerCards.forEach(card => {
       const title = card.querySelector('h3');
       const desc = card.querySelector('p');
       
       if (title && desc && partnerDescriptions[title.textContent]) {
         desc.textContent = partnerDescriptions[title.textContent];
+      }
+    });
+  } else {
+    // 한국어 설명을 위한 데이터 (필요 시 추가)
+    const partnerDescriptionsKO = {
+        '이런익스프레스': '빠르고 안전한 배송 서비스를 제공하는 물류 전문 파트너입니다. 국내외 배송부터 창고 관리까지, 효율적인 물류 솔루션으로 고객의 비즈니스 성장을 지원합니다.',
+        '케이스타일나우': '최신 트렌드를 선도하는 패션 및 라이프스타일 브랜드입니다. 혁신적인 디자인과 품질로 고객의 스타일을 완성하며, 글로벌 시장에서 K-패션의 우수성을 알리고 있습니다.',
+        '파이슨': '세계적인 반도체 기술 전문 기업으로, 혁신적인 스토리지 솔루션을 제공합니다. 최첨단 기술력을 바탕으로 다양한 산업 분야에서 신뢰받는 파트너로 자리잡고 있습니다.',
+        '미닥뷰티': '천연 성분을 바탕으로 한 프리미엄 뷰티 제품을 선보이는 K-뷰티 브랜드입니다. 건강한 아름다움을 추구하며, 고객 만족을 최우선으로 하는 혁신적인 제품을 개발합니다.',
+        '이런무빙': '전문적이고 안전한 이사 서비스를 제공하는 이주 전문 파트너입니다. 개인 이사부터 기업 이전까지, 고객의 소중한 짐을 안전하게 새로운 공간으로 옮겨드립니다.',
+        '조아익스프레스': '빠르고 정확한 택배 및 물류 서비스로 고객의 신뢰를 받고 있는 배송 전문 파트너입니다. 전국 배송 네트워크를 통해 시간과 비용을 절약하는 스마트한 배송 솔루션을 제공합니다.'
+    };
+    partnerCards.forEach(card => {
+      const title = card.querySelector('h3');
+      const desc = card.querySelector('p');
+      
+      if (title && desc && partnerDescriptionsKO[title.textContent]) {
+        desc.textContent = partnerDescriptionsKO[title.textContent];
       }
     });
   }
