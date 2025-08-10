@@ -272,12 +272,12 @@ function updatePartnerCardLanguage(lang, visitText) {
 
   if (lang === 'en') {
     const partnerDescriptions = {
-      '이런익스프레스': 'A logistics specialist partner providing fast and safe delivery services. From domestic and international shipping to warehouse management, we support your business growth with efficient logistics solutions.',
-      '케이스타일나우': 'A fashion and lifestyle brand leading the latest trends. With innovative design and quality, we complete your style and promote the excellence of K-fashion in the global market.',
-      '파이슨': 'A global semiconductor technology company providing innovative storage solutions. Based on cutting-edge technology, we are a trusted partner in various industries.',
-      '미닥뷰티': 'A K-beauty brand offering premium beauty products based on natural ingredients. Pursuing healthy beauty, we develop innovative products that prioritize customer satisfaction.',
-      '이런무빙': 'A relocation specialist partner providing professional and safe moving services. From personal moves to corporate relocations, we safely transport your valuable belongings to new spaces.',
-      '조아익스프레스': 'A delivery specialist partner trusted for fast and accurate courier and logistics services. We provide smart delivery solutions that save time and costs through a nationwide delivery network.'
+      'ErunExpress': 'A logistics specialist partner providing fast and safe delivery services. From domestic and international shipping to warehouse management, we support your business growth with efficient logistics solutions.',
+      'KStyleNow': 'A fashion and lifestyle brand leading the latest trends. With innovative design and quality, we complete your style and promote the excellence of K-fashion in the global market.',
+      'PHISON': 'A global semiconductor technology company providing innovative storage solutions. Based on cutting-edge technology, we are a trusted partner in various industries.',
+      'MIDAKBeauty': 'A K-beauty brand offering premium beauty products based on natural ingredients. Pursuing healthy beauty, we develop innovative products that prioritize customer satisfaction.',
+      'ErunMOVING': 'A relocation specialist partner providing professional and safe moving services. From personal moves to corporate relocations, we safely transport your valuable belongings to new spaces.',
+      'JoaExpress': 'A delivery specialist partner trusted for fast and accurate courier and logistics services. We provide smart delivery solutions that save time and costs through a nationwide delivery network.'
     };
     
     partnerCards.forEach(card => {
@@ -293,8 +293,8 @@ function updatePartnerCardLanguage(lang, visitText) {
     const partnerDescriptionsKO = {
         '이런익스프레스': '빠르고 안전한 배송 서비스를 제공하는 물류 전문 파트너입니다. 국내외 배송부터 창고 관리까지, 효율적인 물류 솔루션으로 고객의 비즈니스 성장을 지원합니다.',
         '케이스타일나우': '최신 트렌드를 선도하는 패션 및 라이프스타일 브랜드입니다. 혁신적인 디자인과 품질로 고객의 스타일을 완성하며, 글로벌 시장에서 K-패션의 우수성을 알리고 있습니다.',
-        '파이슨': '세계적인 반도체 기술 전문 기업으로, 혁신적인 스토리지 솔루션을 제공합니다. 최첨단 기술력을 바탕으로 다양한 산업 분야에서 신뢰받는 파트너로 자리잡고 있습니다.',
-        '미닥뷰티': '천연 성분을 바탕으로 한 프리미엄 뷰티 제품을 선보이는 K-뷰티 브랜드입니다. 건강한 아름다움을 추구하며, 고객 만족을 최우선으로 하는 혁신적인 제품을 개발합니다.',
+        '피이슨': '세계적인 반도체 기술 전문 기업으로, 혁신적인 스토리지 솔루션을 제공합니다. 최첨단 기술력을 바탕으로 다양한 산업 분야에서 신뢰받는 파트너로 자리잡고 있습니다.',
+        '미다K뷰티': '천연 성분을 바탕으로 한 프리미엄 뷰티 제품을 선보이는 K-뷰티 브랜드입니다. 건강한 아름다움을 추구하며, 고객 만족을 최우선으로 하는 혁신적인 제품을 개발합니다.',
         '이런무빙': '전문적이고 안전한 이사 서비스를 제공하는 이주 전문 파트너입니다. 개인 이사부터 기업 이전까지, 고객의 소중한 짐을 안전하게 새로운 공간으로 옮겨드립니다.',
         '조아익스프레스': '빠르고 정확한 택배 및 물류 서비스로 고객의 신뢰를 받고 있는 배송 전문 파트너입니다. 전국 배송 네트워크를 통해 시간과 비용을 절약하는 스마트한 배송 솔루션을 제공합니다.'
     };
