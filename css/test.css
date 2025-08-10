@@ -1,4 +1,3 @@
-
     /* Partners page specific styles */
     .partners-hero {
       background: linear-gradient(135deg, #1a365d 0%, #2d5a87 100%);
@@ -25,7 +24,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('../images/BrandElevate_Success.png') bottom center/cover;
+      background: url('images/BrandElevate_Success.png') bottom center/cover;
       z-index: 1;
     }
     
@@ -96,7 +95,7 @@
       animation: fadeIn 1.5s ease-out;
       animation-delay: 0.3s;
       opacity: 0;
-      animation-fill-mode: forwards;      
+      animation-fill-mode: forwards;
       word-break: keep-all; /* 한글 단어 단위 줄바꿈 */
       word-wrap: break-word; /* 긴 단어 줄바꿈 */
     }
