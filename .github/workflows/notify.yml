@@ -2,10 +2,8 @@ name: Notify on Push (Telegram)
 
 on:
   push:
-    branches: [ main ]     # 필요 시 수정
-    # paths:                # 특정 경로만 감지하고 싶으면 사용
-    #   - "src/**"
-    #   - "!docs/**"
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   telegram-notify:
@@ -15,14 +13,12 @@ jobs:
       - name: Build message
         id: msg
         run: |
-          # 기본 정보
           REPO="$GITHUB_REPOSITORY"
           ACTOR="$GITHUB_ACTOR"
           BRANCH="${GITHUB_REF##*/}"
           SHA_SHORT="${GITHUB_SHA::7}"
           HEAD_MSG="$(jq -r '.head_commit.message // ""' "$GITHUB_EVENT_PATH" | tr -d '\r' | head -c 500)"
 
-          # 커밋 요약(최대 5개, 1줄 메시지)
           COMMITS=$(jq -r '
             if (.commits | length) > 0 then
               "🧾 Commits:\n" +
@@ -42,22 +38,33 @@ jobs:
             MSG="${MSG}\n\n${COMMITS}"
           fi
 
-          # GITHUB_OUTPUT로 전달
           {
             echo "text<<EOF"
             echo "$MSG"
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Send to Telegram
+      - name: Send to Telegram (with debug)
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID:   ${{ secrets.TELEGRAM_CHAT_ID }}
-          TEXT:               ${{ steps.msg.outputs.text }}
+          TELEGRAM_CHAT_ID_RAW: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TEXT: ${{ steps.msg.outputs.text }}
         run: |
-          # JSON으로 안전하게 전송(인코딩 스트레스 X)
+          set -euo pipefail
+          TELEGRAM_CHAT_ID="$(echo -n "$TELEGRAM_CHAT_ID_RAW" | tr -d '[:space:]' | sed 's/"//g')"
+
           payload=$(jq -n --arg chat_id "$TELEGRAM_CHAT_ID" --arg text "$TEXT" \
                      '{chat_id:$chat_id, text:$text, disable_web_page_preview:true}')
-          curl -sS -X POST -H "Content-Type: application/json" \
+
+          RESP=$(mktemp)
+          CODE=$(curl -sS -o "$RESP" -w "%{http_code}" -X POST \
+            -H "Content-Type: application/json" \
             -d "$payload" \
-            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage")
+
+          echo "HTTP $CODE"
+          echo "Response:"
+          cat "$RESP"
+          echo
+
+          [ "$CODE" = "200" ] || { echo "Telegram API error"; exit 1; }
