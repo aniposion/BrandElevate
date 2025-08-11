@@ -564,8 +564,7 @@ function initScrollAnimations() {
  * Initialize interactive features
  */
 function initInteractions() {
-  // 언어 설정 불러오기 (Load language preference)
-  loadLanguagePreference();
+  
   
   // Animation for gradient text
   const heroTitle = document.querySelector('.hero h1');
