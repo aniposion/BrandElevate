@@ -1579,6 +1579,40 @@ button:focus {
     font-size: var(--font-size-large);
   }
 
+  /* 팝업창의 내부 여백을 줄여 모바일 화면 공간을 확보합니다. */
+  .email-popup {
+    padding: var(--space-3); /* 기존 1.5rem -> 1rem 으로 조정 */
+  }
+
+  /* 팝업 제목의 폰트 크기를 모바일에 맞게 줄입니다. */
+  .email-popup h2 {
+    font-size: var(--font-size-xl); /* 기존 2rem -> 1.5rem 으로 조정 */
+  }
+
+  /* 폼 내부의 전체적인 세로 간격을 줄여 한 화면에 더 잘 보이게 합니다. */
+  #contact-form {
+    gap: var(--space-2); /* 기존 1rem -> 0.5rem 으로 조정 */
+  }
+
+  /* (기존) '성'과 '이름' 필드가 가로 2열에서 세로 1열로 변경됩니다. */
+  #contact-form .form-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-2); /* 필드 사이의 간격도 조정합니다. */
+  }
+
+  /* 입력 필드의 폰트 크기를 약간 줄여 가독성을 유지합니다. */
+  #contact-form input,
+  #contact-form textarea {
+    font-size: 0.9rem;
+  }
+
+  /* (기존) '메시지 보내기' 버튼을 가로 전체 너비로 확장하여 누르기 쉽게 만듭니다. */
+  #contact-form .submit-btn {
+    width: 100%;
+    justify-self: stretch;
+  }
+  
+
   
 }
 
