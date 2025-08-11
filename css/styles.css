@@ -111,12 +111,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* 기존 'padding' 값을 수정합니다. */
-  padding: 10px 15px; /* 고정 헤더에 맞게 상하좌우 패딩 조정 */
+  /* 상하 패딩은 유지하고, 좌우 패딩은 부모인 .container에 맡기도록 0으로 설정 */
+  padding: 10px 0;
   position: relative;
-  /* 콘텐츠 중앙 정렬을 위해 아래 속성을 추가합니다. */
-  max-width: 1200px;
-  margin: 0 auto;
+  /* max-width와 margin은 부모 .container가 담당하므로 제거합니다. */
 }
 
 /* 언어 선택기 스타일 (Language selector styles) */
