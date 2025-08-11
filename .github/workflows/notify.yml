@@ -1,69 +1,17 @@
-name: Notify on Push (Telegram)
-
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
+name: telegram-test
+on: [push, workflow_dispatch]
 
 jobs:
-  telegram-notify:
+  send-telegram:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Build message
-        id: msg
-        run: |
-          REPO="$GITHUB_REPOSITORY"
-          ACTOR="$GITHUB_ACTOR"
-          BRANCH="${GITHUB_REF##*/}"
-          SHA_SHORT="${GITHUB_SHA::7}"
-          HEAD_MSG="$(jq -r '.head_commit.message // ""' "$GITHUB_EVENT_PATH" | tr -d '\r' | head -c 500)"
-
-          COMMITS=$(jq -r '
-            if (.commits | length) > 0 then
-              "🧾 Commits:\n" +
-              ([.commits[] | {id: .id[0:7], msg: (.message // "" | gsub("\r";"") | split("\n")[0])}][0:5]
-               | map("• " + .id + " " + .msg) | join("\n"))
-            else "" end
-          ' "$GITHUB_EVENT_PATH")
-
-          MSG="🚀 Git push detected
-📦 Repo: ${REPO}
-🔀 Branch: ${BRANCH}
-🧑‍💻 Pusher: ${ACTOR}
-🔖 Head: ${SHA_SHORT}
-✍️ Message: ${HEAD_MSG}"
-
-          if [ -n "$COMMITS" ]; then
-            MSG="${MSG}\n\n${COMMITS}"
-          fi
-
-          {
-            echo "text<<EOF"
-            echo "$MSG"
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
-
-      - name: Send to Telegram (with debug)
+      - name: Send Telegram
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID_RAW: ${{ secrets.TELEGRAM_CHAT_ID }}
-          TEXT: ${{ steps.msg.outputs.text }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          set -euo pipefail
-          TELEGRAM_CHAT_ID="$(echo -n "$TELEGRAM_CHAT_ID_RAW" | tr -d '[:space:]' | sed 's/"//g')"
-
-          payload=$(jq -n --arg chat_id "$TELEGRAM_CHAT_ID" --arg text "$TEXT" \
-                     '{chat_id:$chat_id, text:$text, disable_web_page_preview:true}')
-
-          RESP=$(mktemp)
-          CODE=$(curl -sS -o "$RESP" -w "%{http_code}" -X POST \
-            -H "Content-Type: application/json" \
-            -d "$payload" \
-            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage")
-
-          echo "HTTP $CODE"
-          echo "Response:"
-          cat "$RESP"
-          echo
-          [ "$CODE" = "200" ] || { echo "Telegram API error"; exit 1; }
+          TEXT="✅ GitHub push: $GITHUB_REPOSITORY @ ${GITHUB_REF##*/} (${GITHUB_SHA::7})"
+          curl -sS "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            -d chat_id="${TELEGRAM_CHAT_ID}" \
+            -d text="$TEXT" \
+            -d disable_web_page_preview=true
