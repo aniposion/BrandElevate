@@ -66,5 +66,4 @@ jobs:
           echo "Response:"
           cat "$RESP"
           echo
-
           [ "$CODE" = "200" ] || { echo "Telegram API error"; exit 1; }
