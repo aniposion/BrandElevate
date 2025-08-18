@@ -257,13 +257,23 @@ document.addEventListener('click', function(e) {
  */
 function handleResponsiveFeatures() {
   const isMobile = window.innerWidth <= 768;
-  
-  // 모바일에서 타임라인 조정
   const timelineContainers = document.querySelectorAll('.timeline-container');
-  timelineContainers.forEach(container => {
+
+  timelineContainers.forEach((container, index) => {
     if (isMobile) {
+      // 모바일 뷰: 'left', 'right'를 제거하고 'mobile'을 추가합니다.
       container.classList.remove('left', 'right');
       container.classList.add('mobile');
+    } else {
+      // 데스크톱 뷰: 'mobile'을 제거하고, 순서에 따라 'left' 또는 'right'를 다시 추가합니다.
+      container.classList.remove('mobile');
+      
+      // 짝수 번째 요소(0, 2, 4...)는 'left', 홀수 번째 요소(1, 3, 5...)는 'right'
+      if (index % 2 === 0) { 
+        container.classList.add('left');
+      } else {
+        container.classList.add('right');
+      }
     }
   });
 }

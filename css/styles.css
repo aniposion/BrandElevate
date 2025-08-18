@@ -623,7 +623,7 @@ header {
 }
 
 .why-different h2 {
-  font-size: var(--font-size-3xl);
+  font-size: var(--fs-h2);
   text-align: center;
   margin-bottom: var(--spacing-md);
   color: var(--color-primary);
@@ -685,7 +685,7 @@ header {
 }
 
 .all-in-one h2 {
-  font-size: var(--font-size-3xl);
+  font-size: var(--fs-h2);
   text-align: center;
   margin-bottom: var(--spacing-md);
   color: white;
@@ -731,7 +731,7 @@ header {
 }
 
 .process-section h2 {
-  font-size: var(--font-size-3xl);
+  font-size: var(--fs-h2);
   text-align: center;
   margin-bottom: var(--spacing-md);
   color: var(--color-primary);
@@ -784,7 +784,7 @@ header {
 }
 
 .company-story h2 {
-  font-size: var(--font-size-3xl);
+  font-size: var(--fs-h2);
   text-align: center;
   padding-top: var(--spacing-xl);
   margin-bottom: var(--spacing-3xl);
@@ -991,7 +991,7 @@ h1.animate, h2.animate {
 }
 
 .services h2 {
-  font-size: var(--font-size-3xl);
+  font-size: var(--fs-h2);
   text-align: center;
   margin-bottom: var(--spacing-md);
   color: var(--color-primary);
@@ -999,7 +999,7 @@ h1.animate, h2.animate {
 
 
 .section-title {
-  font-size: var(--font-size-3xl);
+  font-size: var(--fs-h2);
   margin-bottom: var(--spacing-2xl);
   position: relative;
   display: inline-block;
@@ -1158,7 +1158,7 @@ h1.animate, h2.animate {
 }
 
 .cta-section h2 {
-  font-size: var(--font-size-3xl);
+  font-size: var(--fs-h2);
   margin-bottom: var(--spacing-md);
   position: relative;
   color: white;
@@ -1401,7 +1401,7 @@ button:focus {
   }
   
   .hero h1 {
-    font-size: var(--font-size-3xl);
+    font-size: var(--fs-h2);
   }
   
   .footer-content {
@@ -1430,7 +1430,7 @@ button:focus {
   }
   
   .hero h1 {
-    font-size: var(--font-size-2xl);
+    font-size: var(--fs-h2); /* var(--font-size-2xl); */
   }
   
   .hero p {
@@ -1438,7 +1438,7 @@ button:focus {
   }
   
   .section-title {
-    font-size: var(--font-size-2xl);
+    font-size: var(--fs-h2); /* var(--font-size-2xl); */
   }
   
   .nav-links {
@@ -1664,7 +1664,7 @@ button:focus {
 /* ───────── 타이틀 / 설명 ───────── */
 .email-popup h2{
   color: var(--color-primary);
-  font-size: var(--font-size-2xl);   /* 필요하면 크기 조절 */
+  font-size: var(--fs-h2); /* var(--font-size-2xl); */
   font-weight: 700;
   margin-bottom: var(--space-2);
 }
@@ -1717,4 +1717,64 @@ button:focus {
     width:100%;
     justify-self:stretch;
   }
+}
+
+
+:root {
+  --fs-h2: clamp(1.8rem, 1vw + 1.1rem, var(--font-size-3xl));
+}
+
+/* 공통 섹션 타이틀 */
+section h2,
+.section-title,
+.animated-header {
+  font-size: var(--fs-h2);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--spacing-lg);
+}
+
+
+/* ===== Email popup: compact sizing & mobile tuning ===== */
+
+/* 오버레이 자체도 작은 화면에서 스크롤 가능하도록 */
+.email-popup-overlay{
+  padding: var(--space-3);       /* 가장자리 여백 */
+  overflow: auto;                /* 내부 카드가 길면 오버레이에서 스크롤 */
+}
+
+/* 기본 카드 사이즈 축소 + 세로 제한 */
+.email-popup{
+  /* 데스크톱: 과도하게 넓지 않게, 너무 높으면 내부 스크롤 */
+  width: min(520px, 92vw);
+  max-height: min(80vh, 660px);
+  overflow: auto;
+  padding: var(--space-3);       /* 기본 내부 여백도 약간 축소 */
+}
+
+/* 폼 전체 간격을 전반적으로 줄여 높이 절약 */
+#contact-form{
+  gap: var(--space-2);           /* 기존 space-3 → space-2 */
+}
+/* 2열 전환 임계값을 조금 올려 중간 폭에서도 1열 유지 */
+@media (max-width: 640px){
+  #contact-form .form-row{ grid-template-columns: 1fr; }
+}
+
+/* 모바일 최적화: 더 좁고 낮게 */
+@media (max-width: 480px){
+  .email-popup{
+    width: 92vw;
+    max-height: 78vh;            /* 모바일 뷰포트 기준 더 낮춤 */
+    padding: var(--space-3);     /* 제목/폼과 가장자리 간격 */
+  }
+  .email-popup h2{
+    font-size: var(--font-size-xl); /* 제목 크기 축소(가독 유지) */
+    margin-bottom: var(--space-2);
+  }
+}
+
+/* 아주 큰 화면에서 지나치게 커 보이지 않도록(선택) */
+@media (min-width: 1440px){
+  .email-popup{ width: min(520px, 40vw); }
 }
